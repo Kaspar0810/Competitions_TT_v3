@@ -79,7 +79,7 @@ pdfmetrics.registerFont(TTFont('DejaVuSerif', os.path.join(outpath, 'DejaVuSerif
 pdfmetrics.registerFont(TTFont('DejaVuSerif-Bold', os.path.join(outpath, 'DejaVuSerif-Bold.ttf')))
 pdfmetrics.registerFont(TTFont('DejaVuSerif-Italic', os.path.join(outpath, 'DejaVuSerif-Italic.ttf')))
 # ============== рабочий вариант
-class _MyTableModel(QAbstractTableModel):
+class MyTableModel(QAbstractTableModel):
     def __init__(self, data):
         super().__init__()
         self._data = data
@@ -171,7 +171,7 @@ class _MyTableModel(QAbstractTableModel):
 
 
 
-class MyTableModel(QAbstractTableModel): # === вариант эксперементальный ============
+class _MyTableModel(QAbstractTableModel): # === вариант эксперементальный ============
     def __init__(self, data):
         super().__init__()
         self._data = data
@@ -2279,7 +2279,7 @@ def dupl_regions(n_gr):
     return region_list
 
 
-def _fill_table(player_list):
+def fill_table(player_list):
     """заполняет таблицу со списком участников QtableView спортсменами из db"""
     data = []
     data_table_tmp = []
@@ -2316,7 +2316,7 @@ def _fill_table(player_list):
         else: 
             num_columns = [0, 2, 3, 4, 5, 14, 16]
             model.setHorizontalHeaderLabels(['id','Фамилия Имя', 'Регион', 'Тренер', 'R', 'Финал', 'Место в финале']) 
-    elif tb == 3 or tb == 4 or tb == 5:
+    elif tb == 3:
         num_columns = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
         model.setHorizontalHeaderLabels(['id',' Стадия', 'Группа', 'Встреча', '1-й игрок', '2-й игрок', 'Победитель', 'Очки','Общ. счет', 'Счет в партиях']) 
     elif tb == 6:
@@ -2335,7 +2335,7 @@ def _fill_table(player_list):
         else:
             my_win.tableView.setSelectionMode(QAbstractItemView.SingleSelection) # выделение одной строки по клику мышью
         my_win.tableView.setSelectionBehavior(QAbstractItemView.SelectRows) 
-    elif tb == 3 or tb == 4 or tb == 5 or tb == 7:
+    elif tb == 3 or tb == 7:
         my_win.tableView.setSelectionMode(QAbstractItemView.SingleSelection) # выделение одной строки по клику мышью
         my_win.tableView.setSelectionBehavior(QAbstractItemView.SelectRows) # 
     else:
@@ -2385,7 +2385,7 @@ def _fill_table(player_list):
                 else:
                     data_table_tmp = []
                 data_table_list.extend(data_table_tmp) 
-            elif tb == 3 or tb == 4 or tb == 5:
+            elif tb == 3:
                 item_8 = str(list(player_selected[row].values())[num_columns[7]])
                 item_9 = str(list(player_selected[row].values())[num_columns[8]])
                 item_10 = str(list(player_selected[row].values())[num_columns[9]])
@@ -2436,7 +2436,7 @@ def _fill_table(player_list):
     print('Время работы в миллисекундах: ', res_msec)
 
 
-def fill_table(player_list): # ============== вариант эксперемнетальный =============
+def _fill_table(player_list): # ============== вариант эксперемнетальный =============
     """заполняет таблицу со списком участников QtableView спортсменами из db"""
     data = []
     header_list = []
@@ -3457,7 +3457,7 @@ def page():
         my_win.tableView.setGeometry(QtCore.QRect(260, 195, 1000, 620))
         my_win.tabWidget.setGeometry(QtCore.QRect(260, 0, 1000, 190))
         my_win.toolBox.setGeometry(QtCore.QRect(10, 10, 243, 762))
-        tab_etap()
+        # tab_etap()
         if tb_etap == 0: # подвкладка -Группы-
             stage = "Предварительный"
             load_combobox_filter_group()
