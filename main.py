@@ -302,8 +302,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.tabWidget.setTabEnabled(3, False)
         self.tabWidget.setTabEnabled(4, False)
         self.tabWidget.setTabEnabled(5, False)
-        self.tabWidget.setTabEnabled(6, False)
+        self.tabWidget.setTabEnabled(6, True)
         self.tabWidget.setTabEnabled(7, True)
+
         self.tabWidget_stage.setTabEnabled(0, False)
         self.tabWidget_stage.setTabEnabled(1, False)
         self.tabWidget_stage.setTabEnabled(2, False)
@@ -315,7 +316,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.toolBox.setItemEnabled(3, False)
         self.toolBox.setItemEnabled(4, False)
         self.toolBox.setItemEnabled(5, False)
-        self.toolBox.setItemEnabled(6, False)
+        self.toolBox.setItemEnabled(6, True)
         self.toolBox.setItemEnabled(7, True)
  
 
@@ -656,7 +657,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def r_File(self):
         # Logic for creating a new file goes here...
         self.statusbar.showMessage("Загружен рейтинг-лист на текущий месяц")
-        my_win.tabWidget.setTabEnabled(6, True)
+        my_win.tabWidget.setTabEnabled(5, True)
         my_win.tabWidget.setCurrentIndex(6)
         fill_table_R_list()
         my_win.comboBox_choice_R.setCurrentIndex(0)
@@ -664,7 +665,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def r1_File(self):
         self.statusbar.showMessage("Загружен рейтинг-лист на январь месяц")
-        my_win.tabWidget.setTabEnabled(6, True)
+        my_win.tabWidget.setTabEnabled(5, True)
         my_win.tabWidget.setCurrentIndex(6)
         fill_table_R1_list()
         my_win.comboBox_choice_R.setCurrentIndex(1)
@@ -1268,6 +1269,7 @@ class StartWindow(QMainWindow, Ui_Form):
             elif platform == "win32":  # Windows...
                 os.system(f"{view_file}")
             os.chdir("..")
+         
 
 class ToolTip(): # создание всплывающих подсказок
     my_win.Button_made_R_file.setToolTip("Создание файла Excel для обсчета рейтинга")
@@ -2408,7 +2410,7 @@ def fill_table(player_list):
         my_win.tableView.horizontalHeader().setStyleSheet("background-color:yellow;") # делает фон заголовков светлоголубой
 
         my_win.tableView.verticalHeader().setDefaultSectionSize(16) # высота строки 20 пикселей
-        my_win.tableView.resizeColumnsToContents() # растягивает по содержимому
+        # my_win.tableView.resizeColumnsToContents() # растягивает по содержимому
         my_win.tableView.horizontalHeader().setStretchLastSection(True) # растягивает последнюю колонку до конца
         my_win.tableView.setGridStyle(QtCore.Qt.SolidLine) # вид линии сетки 
     else:
@@ -2427,8 +2429,8 @@ def fill_table(player_list):
             row = 0
             my_win.statusbar.showMessage(
                 "Такого спортсмена в рейтинг листе нет нет", 10000)
-    my_win.tableView.resizeColumnsToContents() # растягивает по содержимому
-    my_win.tableView.setSortingEnabled(True)
+    # my_win.tableView.resizeColumnsToContents() # растягивает по содержимому
+    # my_win.tableView.setSortingEnabled(True)
     my_win.tableView.show()
     finish = time.time()
     res = finish - start
