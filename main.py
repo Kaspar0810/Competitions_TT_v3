@@ -658,7 +658,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Logic for creating a new file goes here...
         self.statusbar.showMessage("Загружен рейтинг-лист на текущий месяц")
         my_win.tabWidget.setTabEnabled(5, True)
-        my_win.tabWidget.setCurrentIndex(6)
+        my_win.tabWidget.setCurrentIndex(5)
         fill_table_R_list()
         my_win.comboBox_choice_R.setCurrentIndex(0)
         my_win.lineEdit_find_player_in_R.setFocus()
@@ -666,7 +666,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def r1_File(self):
         self.statusbar.showMessage("Загружен рейтинг-лист на январь месяц")
         my_win.tabWidget.setTabEnabled(5, True)
-        my_win.tabWidget.setCurrentIndex(6)
+        my_win.tabWidget.setCurrentIndex(5)
         fill_table_R1_list()
         my_win.comboBox_choice_R.setCurrentIndex(1)
         my_win.lineEdit_find_player_in_R.setFocus()
@@ -1032,7 +1032,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 ['Breeze', 'Oxygen', 'QtCurve', 'Windows', 'Fusion']
 app = QApplication(sys.argv)
 my_win = MainWindow()
-app.setStyle('Fusion')
+app.setStyle('Windows')
 my_win.setWindowTitle("Соревнования по настольному теннису")
 my_win.setWindowIcon(QIcon("CTT.png"))
 my_win.resize(1390, 804)
@@ -3456,7 +3456,7 @@ def page():
         my_win.widget.hide()
         my_win.tableWidget.hide()
         my_win.resize(1270, 825)
-        my_win.tableView.setGeometry(QtCore.QRect(260, 195, 1000, 620))
+        my_win.tableView.setGeometry(QtCore.QRect(260, 195, 1000, 575))
         my_win.tabWidget.setGeometry(QtCore.QRect(260, 0, 1000, 190))
         my_win.toolBox.setGeometry(QtCore.QRect(10, 10, 243, 762))
         # tab_etap()
@@ -3496,7 +3496,7 @@ def page():
         my_win.label_16.hide()
         my_win.tableView_net.hide() # сетка ручной жеребьевки на 32
         tab_etap()
-    elif tb == 6: # вкладка -рейтинг-
+    elif tb == 5: # вкладка -рейтинг-
         my_win.resize(1110, 825)
         my_win.tableView.setGeometry(QtCore.QRect(260, 75, 841, 702))
         my_win.tabWidget.setGeometry(QtCore.QRect(260, 0, 841, 71))
@@ -3507,7 +3507,7 @@ def page():
         rejting_month = ["За текуший месяц", "За январь месяц"]
         my_win.comboBox_choice_R.addItems(rejting_month)
         load_comboBox_filter_rejting()
-    elif tb == 7: # вкладка -дополнительно-
+    elif tb == 6: # вкладка -дополнительно-
         my_win.groupBox_4.show()
         my_win.resize(1110, 825)
         my_win.tableView.setGeometry(QtCore.QRect(260, 250, 841, 400))
@@ -3525,7 +3525,7 @@ def page():
         my_win.comboBox_first_group.setEnabled(False)
         my_win.comboBox_second_group.setEnabled(False)
         load_combo_etap_begunki()
-    elif tb == 8: # парный разряд
+    elif tb == 4: # парный разряд
         pass
         # ======
     hide_show_columns(tb)
